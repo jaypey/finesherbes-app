@@ -28,24 +28,18 @@ import ScannerStep from './components/ScannerStep';
 
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
     <SafeAreaView style={styles.sectionContainer}>
-      <Stepper></Stepper>
-      <ScannerStep></ScannerStep>
+      <Stepper>
+      </Stepper>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    backgroundColor: 'white'
   },
 });
 

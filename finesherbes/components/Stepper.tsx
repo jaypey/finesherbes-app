@@ -1,12 +1,18 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import ScannerStep from './ScannerStep';
+import OrderStep from './OrderStep';
 
 type Step = {
   stepName: string
   stepDisplayName: string
   isCurrent: boolean
+}
+
+type Order = {
+  tableNumber?: number
+  foodNumber?: number
 }
 
 const updateSteps = (value: string, steps: Step[]) => {
@@ -19,9 +25,10 @@ const updateSteps = (value: string, steps: Step[]) => {
     return e;
   });
 }
-
+      
 const Stepper = () => {
 
+  const [order, setOrder] = React.useState<Order>({tableNumber: undefined, foodNumber: undefined});
   const [steps, setSteps] = React.useState<Step[]>([
     {
     stepName: "scan",
@@ -40,26 +47,44 @@ const Stepper = () => {
     },
 ]);
 
+  const updateTableNumber = (tableNumber: number) => {
+    setOrder({tableNumber: tableNumber, foodNumber: order.foodNumber});
+    setSteps(updateSteps("order", steps))
+  }
+  let stepComponent;
+  switch (steps.find(x=> x.isCurrent == true)?.stepName) {
+    case "scan":
+      stepComponent = <ScannerStep updateTableNumber={updateTableNumber}></ScannerStep>
+      break;
+    case "order":
+      stepComponent = <OrderStep></OrderStep>
+      break;
+    case "eat":
+      break;
+    default:
+      break;
+  }
+
   return (
-    <>
+    <View style={styles.stepper}>
       <SegmentedButtons
       value={steps.find(x=>x.isCurrent)!.stepName}
-      onValueChange={(v) => {setSteps(updateSteps(v, steps))}}
+      onValueChange={() => {}}
       buttons={
         steps.map((e) => {
           return { value: e.stepName, label: e.stepDisplayName, disabled: !e.isCurrent}
         })
       }
       />
-      <ScannerStep></ScannerStep>
-    </>
+      {stepComponent}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
+  stepper: {
+      paddingTop: 32,
+      paddingHorizontal: 24,
   },
 });
 
