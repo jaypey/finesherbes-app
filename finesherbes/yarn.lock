@@ -5566,6 +5566,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
+"react-native-ble-manager@^10.1.5":
+  "integrity" "sha512-74qyH9IV81oY2J1ECul09M3Png7jTHPq74YG6VSa2I2Q/ZvU27NTNUu1DHYsk7Wwpexs+HJ1kAQWgJBaAM9IcQ=="
+  "resolved" "https://registry.npmjs.org/react-native-ble-manager/-/react-native-ble-manager-10.1.5.tgz"
+  "version" "10.1.5"
+
 "react-native-camera@^4.2.1", "react-native-camera@>=1.0.2":
   "integrity" "sha512-+Vkql24PFYQfsPRznJCvPwJQfyzCnjlcww/iZ4Ej80bgivKjL9eU0IMQIXp4yi6XCrKi4voWXxIDPMupQZKeIQ=="
   "resolved" "https://registry.npmjs.org/react-native-camera/-/react-native-camera-4.2.1.tgz"

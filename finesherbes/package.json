@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "18.2.0",
     "react-native": "0.72.6",
+    "react-native-ble-manager": "^10.1.5",
     "react-native-camera": "^4.2.1",
     "react-native-paper": "^5.10.6",
     "react-native-qrcode-scanner": "^1.5.5"
